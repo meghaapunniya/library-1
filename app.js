@@ -6,7 +6,10 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const bookRouter = express.Router();
+const nav = [
+  { link: '/books', title: 'BOOK' },
+  { link: '/authors', title: 'AUTHOR' },
+];
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -16,29 +19,18 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-app.get('/books', function (req, res) {
-  res.send('Hello World from kumanan!')
-});
-// bookRouter.route('/books')
-// .get((req,res) =>{
-//   res.send('Hello Books');
-// });
+const bookRouter = require('./src/routes/bookRoutes')(nav);
 
-
-bookRouter.route('/single')
-.get((req,res) =>{
-  res.send('Hello Single Book');
-});
-
-app.use('/books',bookRouter);
+app.use('/books', bookRouter);
 app.get('/', (req, res) => {
-  res.render('index',
+  res.render(
+    'index',
     {
-    nav: [{ link: '/books', title: 'BOOKS' },
-      { link: '/authors', title: 'AUTHORS' }],
-    title: 'Library'
-    });
-
+      nav: [{ link: '/books', title: 'BOOKS' },
+        { link: '/authors', title: 'AUTHORS' }],
+      title: 'Library',
+    },
+  );
 });
 
 app.listen(port, () => {
