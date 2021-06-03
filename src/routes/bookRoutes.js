@@ -4,32 +4,32 @@ const bookRouter = express.Router();
 function router(nav) {
   const books = [
     {
-      title: 'War and Peace',
+      title: 'Life of Pi',
+      genre: 'Action and Adventure',
+      author: 'Yann Martel',
+      read: false
+    },
+    {
+      title: 'Little Women',
+      genre: 'Classics',
+      author: 'Louisa May Alcot',
+      read: false
+    },
+    {
+      title: 'Watchmen',
+      genre: 'Comic book',
+      author: 'Alan Moore',
+      read: false
+    },
+    {
+      title: 'The Help',
       genre: 'Historical Fiction',
-      author: 'Lev Nikolayevich Tolstoy',
+      author: 'Kathryn Stockett',
       read: false
     },
     {
-      title: 'Les Misérables',
-      genre: 'Historical Fiction',
-      author: 'Victor Hugo',
-      read: false
-    },
-    {
-      title: 'The Time Machine',
-      genre: 'Science Fiction',
-      author: 'H. G. Wells',
-      read: false
-    },
-    {
-      title: 'A Journey into the Center of the Earth',
-      genre: 'Science Fiction',
-      author: 'Jules Verne',
-      read: false
-    },
-    {
-      title: 'The Dark World',
-      genre: 'Fantasy',
+      title: 'Bird Box',
+      genre: 'Horror',
       author: 'Henry Kuttner',
       read: false
     },
